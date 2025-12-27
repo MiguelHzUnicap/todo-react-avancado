@@ -1,0 +1,20 @@
+import React from "react";
+import { useTodo } from "../context/TodoContext";
+
+function TodoItem({ todo }) {
+  const { toggleTodo, removeTodo } = useTodo();
+
+  return (
+    <li>
+      <span
+        onClick={() => toggleTodo(todo.id)}
+        style={{ textDecoration: todo.done ? "line-through" : "none", cursor: "pointer" }}
+      >
+        {todo.text}
+      </span>
+      <button onClick={() => removeTodo(todo.id)}>X</button>
+    </li>
+  );
+}
+
+export default React.memo(TodoItem);
